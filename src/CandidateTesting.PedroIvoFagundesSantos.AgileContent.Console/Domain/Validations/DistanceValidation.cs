@@ -1,5 +1,6 @@
 ﻿using CandidateTesting.PedroIvoFagundesSantos.AgileContent.Console.Domain.Entities;
 using FluentValidation;
+using FluentValidation.Results;
 using System.Collections.Generic;
 
 namespace CandidateTesting.PedroIvoFagundesSantos.AgileContent.Console.Domain.Validations
@@ -10,23 +11,14 @@ namespace CandidateTesting.PedroIvoFagundesSantos.AgileContent.Console.Domain.Va
         {
             ValidateArray();
         }
+
         protected override void EnsureInstanceNotNull(object instanceToValidate)
         {
-           //throw new ValidationResult(new[] { new ValidationFailure("Customer", "Customer cannot be null") })
-           //return new ValidationResult(new List<ValidationFailure>
-           //{
-           //    new ValidationFailure
-           //    {
-           //        ErrorMessage = ""
-           //    }
-           //});
-           //var failure = new ValidationFailure();
+            if (instanceToValidate != default)
+                return;
 
-           //throw new ValidationException(new List<ValidationFailure>{
-           //    new ValidationFailure("")
-           //{
-           //    ErrorMessage = ""
-           //}});
+            var errorFailure = new ValidationFailure(string.Empty, "AdjacentArray is a required field.");
+            throw  new ValidationException(new List<ValidationFailure>{errorFailure});
         }
 
         protected void ValidateArray()
@@ -37,7 +29,7 @@ namespace CandidateTesting.PedroIvoFagundesSantos.AgileContent.Console.Domain.Va
 
         private static bool MinimumLenghtRequired(IReadOnlyCollection<int> adjacentDistance)
         {
-            return adjacentDistance.Count >= 2;
+            return adjacentDistance?.Count >= 2;
         }
     }
 }

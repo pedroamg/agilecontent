@@ -9,4 +9,9 @@
     <PackageReference Include="FluentValidation" Version="9.3.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Ioc\Extension\" />
+    <Folder Include="Ioc\Registers\" />
+  </ItemGroup>
+
 </Project>

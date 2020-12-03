@@ -1,7 +1,7 @@
 ﻿using CandidateTesting.PedroIvoFagundesSantos.AgileContent.Console.Domain.Interfaces.Repositories;
-using System;
+using CandidateTesting.PedroIvoFagundesSantos.AgileContent.Console.Domain.Interfaces.Services;
 
-namespace CandidateTesting.PedroIvoFagundesSantos.AgileContent.Console.Domain.Interfaces.Services
+namespace CandidateTesting.PedroIvoFagundesSantos.AgileContent.Console.Domain.Services
 {
     public class FunctionsService : IFunctionsService
     {
@@ -15,11 +15,5 @@ namespace CandidateTesting.PedroIvoFagundesSantos.AgileContent.Console.Domain.In
         {
             return _functionRepository.GetMaxAdjacentValue(adjacentArray);
         }
-    }
-
-
-    public interface IFunctionsService
-    {
-        int CalcAdjacentValue(int[] adjacentArray);
     }
 }

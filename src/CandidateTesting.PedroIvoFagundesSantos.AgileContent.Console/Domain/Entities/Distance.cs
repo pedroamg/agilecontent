@@ -1,5 +1,5 @@
 ﻿using CandidateTesting.PedroIvoFagundesSantos.AgileContent.Console.Domain.Validations;
-using FluentValidation;
+using System;
 
 namespace CandidateTesting.PedroIvoFagundesSantos.AgileContent.Console.Domain.Entities
 {
@@ -10,22 +10,32 @@ namespace CandidateTesting.PedroIvoFagundesSantos.AgileContent.Console.Domain.En
         {
             AdjcentDistance = adjacentDistance;
         }
-
-        public int CalcMinAdjancetDistance()
+        
+        public int GetMaxAdjacentDistance()
         {
-            IsValid();
-            return 5;
+            if(!IsValid())
+                return - 2;
+            
+            return CalcMaxAdjacentDistance();
         }
 
-        public int CalcMaxAdjacentDistance()
+        private int CalcMaxAdjacentDistance()
         {
-            IsValid();
-            return 5;
+            var adjacent = 0;
+            Array.Sort(AdjcentDistance);
+            for (var i = 0; i < AdjcentDistance.Length - 1; i++)
+            {
+                var difference = Math.Abs(AdjcentDistance[i + 1] - AdjcentDistance[i]);
+                adjacent = Math.Max(difference, adjacent);
+            }
+
+            return adjacent;
         }
 
-        private void IsValid()
+        private bool IsValid()
         {
-            new DistanceValidation().ValidateAndThrow(this);
+           var result = new DistanceValidation().Validate(this);
+           return result.IsValid;
         }
     }
 }

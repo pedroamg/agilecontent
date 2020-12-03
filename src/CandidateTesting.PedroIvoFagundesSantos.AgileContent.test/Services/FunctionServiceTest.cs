@@ -1,6 +1,7 @@
 ﻿using CandidateTesting.PedroIvoFagundesSantos.AgileContent.Console.Domain.Interfaces.Repositories;
 using CandidateTesting.PedroIvoFagundesSantos.AgileContent.Console.Domain.Interfaces.Services;
-using FluentValidation;
+using CandidateTesting.PedroIvoFagundesSantos.AgileContent.Console.Domain.Services;
+using CandidateTesting.PedroIvoFagundesSantos.AgileContent.Console.Repository;
 using Xunit;
 
 namespace CandidateTesting.PedroIvoFagundesSantos.AgileContent.test.Services
@@ -18,17 +19,18 @@ namespace CandidateTesting.PedroIvoFagundesSantos.AgileContent.test.Services
         [Fact]
         public void Should_return_Adjacent_values()
         {
-            var arrayValues = new[] { 0, 3, 3, 12, 5, 3, 7, 1 };
-            var adjacentValue = _functionsService.CalcAdjacentValue(arrayValues);
+            var adjacentArray = new[] { 0, 3, 3, 12, 5, 3, 7, 1 };
+            var adjacentValue = _functionsService.CalcAdjacentValue(adjacentArray);
             Assert.Equal(5, adjacentValue);
         }
 
-        [Fact]
-        public void Should_return_at_least_two_values_should_be_informed()
+        [Theory]
+        [InlineData(new[]{ 0 })]
+        [InlineData(null)]
+        public void Should_return_at_least_two_values_should_be_informed(int[] adjacentArray)
         {
-            var arrayValues = new[] { 0 };
-            var exception = Assert.Throws<ValidationException>(() => _functionsService.CalcAdjacentValue(arrayValues));
-            Assert.Contains("It should be informed at least two values to be calculated the adjacent value", exception.Message);
+            var adjacentValue = _functionsService.CalcAdjacentValue(adjacentArray);
+            Assert.Equal(-2, adjacentValue);
         }
     }
 }
