@@ -1,19 +1,19 @@
-﻿using CandidateTesting.PedroIvoFagundesSantos.AgileContent.Console.Domain.Interfaces.Repositories;
-using CandidateTesting.PedroIvoFagundesSantos.AgileContent.Console.Domain.Interfaces.Services;
-using CandidateTesting.PedroIvoFagundesSantos.AgileContent.Console.Domain.Services;
-using CandidateTesting.PedroIvoFagundesSantos.AgileContent.Console.Repository;
+﻿using CandidateTesting.PedroIvoFagundesSantos.AgileContent.ConsoleApp.Domain.Entities;
+using CandidateTesting.PedroIvoFagundesSantos.AgileContent.ConsoleApp.Domain.Interfaces.Services;
+using CandidateTesting.PedroIvoFagundesSantos.AgileContent.ConsoleApp.Domain.Services;
+using CandidateTesting.PedroIvoFagundesSantos.AgileContent.ConsoleApp.Infra.Data.Repository;
 using Xunit;
 
 namespace CandidateTesting.PedroIvoFagundesSantos.AgileContent.test.Services
 {
-    public class FunctionServiceTest
+    public class AdjacentServiceTest 
     {
-
-        private readonly IFunctionsService _functionsService;
-        public FunctionServiceTest()
+        private readonly IAdjacentService _functionsService;
+        public AdjacentServiceTest()
         {
-            var repository = new FunctionRepository();
-            _functionsService = new FunctionsService(repository);
+            var distance = new Distance();
+            var repository = new AdjacentRepository(distance);
+            _functionsService = new AdjacentService(repository);
         }
 
         [Fact]

@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CandidateTesting.PedroIvoFagundesSantos.AgileContent.test", "CandidateTesting.PedroIvoFagundesSantos.AgileContent.test\CandidateTesting.PedroIvoFagundesSantos.AgileContent.test.csproj", "{799A10E4-C8A1-4788-8BD6-50332CB79871}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CandidateTesting.PedroIvoFagundesSantos.AgileContent.test", "CandidateTesting.PedroIvoFagundesSantos.AgileContent.test\CandidateTesting.PedroIvoFagundesSantos.AgileContent.test.csproj", "{799A10E4-C8A1-4788-8BD6-50332CB79871}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 - Test", "02 - Test", "{EA5C419E-A503-4FB1-A0F9-EBAB281D4045}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 - Presentation", "01 - Presentation", "{C60B17DA-9B24-4470-885F-953961652EAE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CandidateTesting.PedroIvoFagundesSantos.AgileContent.Console", "CandidateTesting.PedroIvoFagundesSantos.AgileContent.Console\CandidateTesting.PedroIvoFagundesSantos.AgileContent.Console.csproj", "{83CD20BD-FEF4-44B0-B1E9-63774323D62D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CandidateTesting.PedroIvoFagundesSantos.AgileContent.ConsoleApp", "CandidateTesting.PedroIvoFagundesSantos.AgileContent.Console\CandidateTesting.PedroIvoFagundesSantos.AgileContent.ConsoleApp.csproj", "{83CD20BD-FEF4-44B0-B1E9-63774323D62D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

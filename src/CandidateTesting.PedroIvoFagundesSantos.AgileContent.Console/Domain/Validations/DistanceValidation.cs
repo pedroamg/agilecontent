@@ -1,15 +1,15 @@
-﻿using CandidateTesting.PedroIvoFagundesSantos.AgileContent.Console.Domain.Entities;
+﻿using CandidateTesting.PedroIvoFagundesSantos.AgileContent.ConsoleApp.Domain.Entities;
 using FluentValidation;
 using FluentValidation.Results;
 using System.Collections.Generic;
 
-namespace CandidateTesting.PedroIvoFagundesSantos.AgileContent.Console.Domain.Validations
+namespace CandidateTesting.PedroIvoFagundesSantos.AgileContent.ConsoleApp.Domain.Validations
 {
     public class DistanceValidation : AbstractValidator<Distance>
     {
         public DistanceValidation()
         {
-            ValidateArray();
+            ValidateIfAtLeastTwoValuesWereInformed();
         }
 
         protected override void EnsureInstanceNotNull(object instanceToValidate)
@@ -21,9 +21,9 @@ namespace CandidateTesting.PedroIvoFagundesSantos.AgileContent.Console.Domain.Va
             throw  new ValidationException(new List<ValidationFailure>{errorFailure});
         }
 
-        protected void ValidateArray()
+        protected void ValidateIfAtLeastTwoValuesWereInformed()
         {
-            RuleFor(x => x.AdjcentDistance)
+            RuleFor(x => x.AdjcentValues)
                 .Must(MinimumLenghtRequired).WithMessage("It should be informed at least two values to be calculated the adjacent value");
         }
 

@@ -1,16 +1,12 @@
-﻿using CandidateTesting.PedroIvoFagundesSantos.AgileContent.Console.Domain.Validations;
+﻿using CandidateTesting.PedroIvoFagundesSantos.AgileContent.ConsoleApp.Domain.Validations;
 using System;
 
-namespace CandidateTesting.PedroIvoFagundesSantos.AgileContent.Console.Domain.Entities
+namespace CandidateTesting.PedroIvoFagundesSantos.AgileContent.ConsoleApp.Domain.Entities
 {
-    public class Distance
+    public sealed class Distance
     {
-        public int[] AdjcentDistance { get; }
-        public Distance(int[] adjacentDistance)
-        {
-            AdjcentDistance = adjacentDistance;
-        }
-        
+        public int[] AdjcentValues { get; set; }
+
         public int GetMaxAdjacentDistance()
         {
             if(!IsValid())
@@ -21,14 +17,13 @@ namespace CandidateTesting.PedroIvoFagundesSantos.AgileContent.Console.Domain.En
 
         private int CalcMaxAdjacentDistance()
         {
-            var adjacent = 0;
-            Array.Sort(AdjcentDistance);
-            for (var i = 0; i < AdjcentDistance.Length - 1; i++)
+            var adjacent = -2;
+            Array.Sort(AdjcentValues);
+            for (var i = 0; i < AdjcentValues.Length - 1; i++)
             {
-                var difference = Math.Abs(AdjcentDistance[i + 1] - AdjcentDistance[i]);
+                var difference = Math.Abs(AdjcentValues[i + 1] - AdjcentValues[i]);
                 adjacent = Math.Max(difference, adjacent);
             }
-
             return adjacent;
         }
 
