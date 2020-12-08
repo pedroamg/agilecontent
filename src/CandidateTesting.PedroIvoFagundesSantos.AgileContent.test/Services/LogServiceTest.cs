@@ -41,12 +41,12 @@ namespace CandidateTesting.PedroIvoFagundesSantos.AgileContent.test.Services
         {
             const string input = "http://urlmock.com ./outputpath/log";
             var result = await _logService.GenerateAgoraLogAsync(input, CancellationToken.None);
+            _getFileProxyMock.Verify(x => x.GetFileAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()), Times.Once);
             Assert.True(result);
         }
 
         private void Mock()
         {
-
             _getFileProxyMock = new Mock<IGetFileProxy>();
             _getFileProxyMock.Setup(x => x.GetFileAsync(It.IsAny<string>(), It.IsAny<CancellationToken>())).ReturnsAsync(
                 (string url, CancellationToken cancellationToken) => "312|200|HIT|GET / robots.txt HTTP / 1.1|100.2");
